@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Akhil &amp; Sruthy &middot; Live</title>
+<script>
+  // ========================================================================
+  //  THE ONLY LINE YOU EVER NEED TO CHANGE
+  //
+  //  Leave as "" until the videographer gives you the livestream link.
+  //  Then paste it between the quotes, commit, and the QR codes on every
+  //  printed card start going straight there within about 30 seconds.
+  //
+  //  e.g. var DESTINATION = "https://youtube.com/live/abc123";
+  // ========================================================================
+  var DESTINATION = "";
+
+  if (DESTINATION) {
+    // replace() rather than assign() so the back button doesn't trap people
+    // in a redirect loop.
+    window.location.replace(DESTINATION);
+  }
+</script>
+<style>
+  :root { --ink: #703D2C; --muted: #8d7a73; --bg: #fdfbf8; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg); color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    text-align: center; padding: 1.5rem; line-height: 1.5;
+  }
+  .card { max-width: 32rem; }
+  .names { font-size: clamp(2rem, 9vw, 3.1rem); font-style: italic; margin: 0 0 .35rem; font-weight: normal; }
+  .rule { width: 4rem; height: 1px; background: var(--ink); opacity: .35; margin: 1.4rem auto; }
+  .status { font-size: clamp(1rem, 4vw, 1.2rem); margin: 0 0 .5rem; }
+  .detail { color: var(--muted); font-size: .95rem; margin: .2rem 0; }
+  .go {
+    display: inline-block; margin-top: 1.6rem; padding: .85rem 2rem;
+    background: var(--ink); color: var(--bg); text-decoration: none;
+    border-radius: 2rem; font-size: 1.05rem;
+  }
+  .hint { margin-top: 2.2rem; font-size: .8rem; color: var(--muted); }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink: #e9c9b8; --muted: #a89287; --bg: #1a1310; }
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1 class="names">Akhil &amp; Sruthy</h1>
+    <div class="rule"></div>
+
+    <!-- Shown when DESTINATION is still empty. -->
+    <div id="waiting">
+      <p class="status">The livestream link will appear here.</p>
+      <p class="detail">Sunday, 06 December 2026 &middot; 11 a.m. IST</p>
+      <p class="detail">Rama Varma Club, Kochi</p>
+      <p class="hint">Scan this code again nearer the day &mdash; this page
+        updates automatically, so the code on your card will always be current.</p>
+    </div>
+
+    <!-- Shown when DESTINATION is set, as a fallback if the auto-redirect
+         is slow or scripting is restricted. -->
+    <div id="going" hidden>
+      <p class="status">Taking you to the livestream&hellip;</p>
+      <a class="go" id="golink" href="#">Open the livestream</a>
+      <p class="hint">If nothing happens, tap the button above.</p>
+    </div>
+  </div>
+
+<script>
+  if (DESTINATION) {
+    document.getElementById("waiting").hidden = true;
+    var going = document.getElementById("going");
+    going.hidden = false;
+    document.getElementById("golink").href = DESTINATION;
+  }
+</script>
+</body>
+</html>
